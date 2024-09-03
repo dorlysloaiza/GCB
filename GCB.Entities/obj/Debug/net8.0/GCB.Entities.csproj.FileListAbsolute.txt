@@ -1,0 +1,13 @@
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\bin\Debug\net8.0\GCB.Entities.deps.json
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\bin\Debug\net8.0\GCB.Entities.dll
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\bin\Debug\net8.0\GCB.Entities.pdb
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.AssemblyInfoInputs.cache
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.AssemblyInfo.cs
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.csproj.CoreCompileInputs.cache
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.sourcelink.json
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.dll
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\refint\GCB.Entities.dll
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.pdb
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\ref\GCB.Entities.dll
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.csproj.AssemblyReference.cache

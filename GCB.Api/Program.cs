@@ -1,7 +1,44 @@
+using AutoMapper;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.OData.Edm;
+using Microsoft.AspNetCore.OData;
+using Microsoft.OData.ModelBuilder;
+using GCB.Api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers().AddOData(opt => opt
+    .Select()
+    .Expand()
+    .Filter()
+    .OrderBy()
+    .SetMaxTop(100)
+    .Count()
+    .AddRouteComponents("odata", GetEdmModel()));
+
+// Registrar el AuditInterceptor
+builder.Services.AddScoped<AuditInterceptor>();
+
+// Registrar el DbContext con el AuditInterceptor
+builder.Services.AddDbContext<GCBContext>((serviceProvider, options) =>
+{
+    var auditInterceptor = serviceProvider.GetRequiredService<AuditInterceptor>();
+    options.UseSqlServer(builder.Configuration.GetConnectionString("gcbContext"))
+           .AddInterceptors(auditInterceptor);
+});
+
+// Configurar servicios
+builder.Services.AddScoped<IGenericService<TransactionDto>, GenericService<TransactionDto>>();
+
+// Configurar AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -15,30 +52,21 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
-var summaries = new[]
+app.UseEndpoints(endpoints =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    endpoints.MapControllers();
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+IEdmModel GetEdmModel()
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    var builder = new ODataConventionModelBuilder();
+    builder.EntitySet<TransactionDto>("Transactions");
+    return builder.GetEdmModel();
 }

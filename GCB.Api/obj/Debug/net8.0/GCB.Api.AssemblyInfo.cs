@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GCB.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d04d511029b9321ba7b584c0989a033adc7879f")]
 [assembly: System.Reflection.AssemblyProductAttribute("GCB.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GCB.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
