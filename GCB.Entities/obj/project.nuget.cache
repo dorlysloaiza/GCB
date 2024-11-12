@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "57zAD+hmoprsNEMbGdfgwW+vjBlPNjV6gCPFJhMBTfrhy8BrxNaFRKZR8QEJtNpvMoYYXAI8s14FTnluMsr04Q==",
+  "dgSpecHash": "ncK8RfK7eskFhdpfc7VW7cPms5lBW6mEDEOfyOkYey25OdmslSm+MpQO0iYOsr4a36oW/EgMRMZYWqm8bG/KDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj",
+  "projectFilePath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dorly\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\dorly\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

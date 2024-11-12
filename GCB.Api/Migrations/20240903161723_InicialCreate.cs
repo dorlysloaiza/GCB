@@ -12,7 +12,7 @@ namespace GCB.Api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AuditLogs",
+                name: "RegistrosAuditoria",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -30,7 +30,7 @@ namespace GCB.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BankAccount",
+                name: "CuentaBancaria",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -54,7 +54,7 @@ namespace GCB.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categoria",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -73,7 +73,7 @@ namespace GCB.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transactions",
+                name: "Transacciones",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -97,13 +97,13 @@ namespace GCB.Api.Migrations
                     table.ForeignKey(
                         name: "FK_Transactions_BankAccount_BankAccountId",
                         column: x => x.BankAccountId,
-                        principalTable: "BankAccount",
+                        principalTable: "CuentaBancaria",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transactions_Category_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categoria",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -130,7 +130,7 @@ namespace GCB.Api.Migrations
                     table.ForeignKey(
                         name: "FK_Attachment_Transactions_TransactionId1",
                         column: x => x.TransactionId1,
-                        principalTable: "Transactions",
+                        principalTable: "Transacciones",
                         principalColumn: "Id");
                 });
 
@@ -141,13 +141,13 @@ namespace GCB.Api.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_BankAccountId",
-                table: "Transactions",
-                column: "BankAccountId");
+                table: "Transacciones",
+                column: "IdCuentaBancaria");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_CategoryId",
-                table: "Transactions",
-                column: "CategoryId");
+                table: "Transacciones",
+                column: "IdCategoria ");
         }
 
         /// <inheritdoc />
@@ -157,16 +157,16 @@ namespace GCB.Api.Migrations
                 name: "Attachment");
 
             migrationBuilder.DropTable(
-                name: "AuditLogs");
+                name: "RegistrosAuditoria");
 
             migrationBuilder.DropTable(
-                name: "Transactions");
+                name: "Transacciones");
 
             migrationBuilder.DropTable(
-                name: "BankAccount");
+                name: "CuentaBancaria");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categoria");
         }
     }
 }

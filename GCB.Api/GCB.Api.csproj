@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GCB.Entities\GCB.Entities.csproj" />
+    <ProjectReference Include="..\GCB.Entities\GCB.Entitidades.csproj" />
     <ProjectReference Include="..\..\Share.Entities\Share.Entities.csproj" />
   </ItemGroup>
 

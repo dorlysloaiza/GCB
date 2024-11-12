@@ -30,38 +30,38 @@ namespace GCB.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTimeOffset>("FechaCreacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("CreadorPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("FileContent")
+                    b.Property<byte[]>("ContenidoArchivo")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("FileName")
+                    b.Property<string>("NombreArchivo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TransactionId")
+                    b.Property<int>("IdTransaccion")
                         .HasColumnType("int");
 
                     b.Property<Guid?>("TransactionId1")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("FechaActualizacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("ActualziadoPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -72,233 +72,233 @@ namespace GCB.Api.Migrations
                     b.ToTable("Attachment");
                 });
 
-            modelBuilder.Entity("AuditLog", b =>
+            modelBuilder.Entity("RegistroAuditoria", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Action")
+                    b.Property<string>("Accion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CurrentValues")
+                    b.Property<string>("ObjetoActual")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("Date")
+                    b.Property<DateTimeOffset>("Fecha")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<Guid>("EntityId")
+                    b.Property<Guid>("IdTransaccion")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("EntityName")
+                    b.Property<string>("NombreEntidad")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OriginalValues")
+                    b.Property<string>("ObjetoOriginal")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AuditLogs");
+                    b.ToTable("RegistrosAuditoria");
                 });
 
-            modelBuilder.Entity("BankAccount", b =>
+            modelBuilder.Entity("CuentaBancaria", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AccountHolder")
+                    b.Property<string>("Titular")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AccountNumber")
+                    b.Property<string>("NumeroCuenta")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BankName")
+                    b.Property<string>("NombreBanco")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTimeOffset>("FechaCreacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("CreadorPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Currency")
+                    b.Property<string>("Moneda")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("CurrentBalance")
+                    b.Property<decimal>("BalanceActual")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("InitialBalance")
+                    b.Property<decimal>("BalanceInicial")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastReconciliationDate")
+                    b.Property<DateTime>("UltimaFechaConciliacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTimeOffset?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("FechaActualizacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("ActualziadoPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("BankAccount");
+                    b.ToTable("CuentaBancaria");
                 });
 
-            modelBuilder.Entity("Category", b =>
+            modelBuilder.Entity("Categoria", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTimeOffset>("FechaCreacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("CreadorPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsIncome")
+                    b.Property<bool>("Tipo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("FechaActualizacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("ActualziadoPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categoria");
                 });
 
-            modelBuilder.Entity("Transaction", b =>
+            modelBuilder.Entity("Transaccion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("Amount")
+                    b.Property<double>("Monto")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("BankAccountId")
+                    b.Property<Guid>("IdCuentaBancaria")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid>("IdCategoria ")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTimeOffset>("FechaCreacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("CreadorPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Currency")
+                    b.Property<string>("Moneda")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Descripción")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ExchangeRate")
+                    b.Property<double>("TipoCambio")
                         .HasColumnType("float");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Reference")
+                    b.Property<string>("Referencia")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("FechaActualizacion")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("ActualziadoPor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BankAccountId");
+                    b.HasIndex("IdCuentaBancaria");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("IdCategoria ");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transacciones");
                 });
 
             modelBuilder.Entity("Attachment", b =>
                 {
-                    b.HasOne("Transaction", null)
-                        .WithMany("Attachments")
+                    b.HasOne("Transaccion", null)
+                        .WithMany("Adjuntos")
                         .HasForeignKey("TransactionId1");
                 });
 
-            modelBuilder.Entity("Transaction", b =>
+            modelBuilder.Entity("Transaccion", b =>
                 {
-                    b.HasOne("BankAccount", "BankAccount")
-                        .WithMany("Transactions")
-                        .HasForeignKey("BankAccountId")
+                    b.HasOne("CuentaBancaria", "CuentaBancaria")
+                        .WithMany("Transacciones")
+                        .HasForeignKey("IdCuentaBancaria")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Category", "Category")
+                    b.HasOne("Categoria", "Categoria")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("IdCategoria ")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BankAccount");
+                    b.Navigation("CuentaBancaria");
 
-                    b.Navigation("Category");
+                    b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("BankAccount", b =>
+            modelBuilder.Entity("CuentaBancaria", b =>
                 {
-                    b.Navigation("Transactions");
+                    b.Navigation("Transacciones");
                 });
 
-            modelBuilder.Entity("Transaction", b =>
+            modelBuilder.Entity("Transaccion", b =>
                 {
-                    b.Navigation("Attachments");
+                    b.Navigation("Adjuntos");
                 });
 #pragma warning restore 612, 618
         }

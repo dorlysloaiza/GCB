@@ -1,11 +1,5 @@
-using AutoMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OData.Edm;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
@@ -13,31 +7,43 @@ using GCB.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers().AddOData(opt => opt
-    .Select()
-    .Expand()
-    .Filter()
-    .OrderBy()
-    .SetMaxTop(100)
-    .Count()
-    .AddRouteComponents("odata", GetEdmModel()));
 
-// Registrar el AuditInterceptor
-builder.Services.AddScoped<AuditInterceptor>();
+// Agregar servicios CORS
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAllOrigins",
+//        builder =>
+//        {
+//            builder.AllowAnyOrigin()
+//                   .AllowAnyMethod()
+//                   .AllowAnyHeader();
+//        });
+//});
 
-// Registrar el DbContext con el AuditInterceptor
+
+// Registrar el DbContext
 builder.Services.AddDbContext<GCBContext>((serviceProvider, options) =>
 {
-    var auditInterceptor = serviceProvider.GetRequiredService<AuditInterceptor>();
-    options.UseSqlServer(builder.Configuration.GetConnectionString("gcbContext"))
-           .AddInterceptors(auditInterceptor);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("gcbContext"));
 });
 
 // Configurar servicios
-builder.Services.AddScoped<IGenericService<TransactionDto>, GenericService<TransactionDto>>();
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+
+//Configurar OData
+builder.Services.AddControllers().AddOData(
+    options => options
+    .Select()
+    .Filter()
+    .OrderBy()
+    .Expand()
+    .Count()
+    .SetMaxTop(null).AddRouteComponents(
+    routePrefix: "odata",
+        model: GetEdmModel()));
 
 // Configurar AutoMapper
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,22 +57,26 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-app.UseAuthentication();
+
+// Usar CORS
+//app.UseCors("AllowAllOrigins");
+
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+app.MapControllers();
 
 app.Run();
 
 IEdmModel GetEdmModel()
 {
-    var builder = new ODataConventionModelBuilder();
-    builder.EntitySet<TransactionDto>("Transactions");
-    return builder.GetEdmModel();
+    var modelBuilder = new ODataConventionModelBuilder();
+    // Configuración para la entidad Bank
+    modelBuilder.EntityType<Transaccion>();
+    modelBuilder.EntitySet<Transaccion>("Transacciones");
+    modelBuilder.ComplexType<TransaccionDto>();
+
+
+    return modelBuilder.GetEdmModel();
 }

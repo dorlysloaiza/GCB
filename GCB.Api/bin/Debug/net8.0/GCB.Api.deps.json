@@ -20,6 +20,7 @@
           "Microsoft.OData.Core": "8.0.1",
           "Microsoft.OData.Edm": "8.0.1",
           "Newtonsoft.Json": "13.0.3",
+          "Share.Entities": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -1071,10 +1072,16 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.Relational": "8.0.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
+          "Share.Entities": "1.0.0"
         },
         "runtime": {
           "GCB.Entities.dll": {}
+        }
+      },
+      "Share.Entities/1.0.0": {
+        "runtime": {
+          "Share.Entities.dll": {}
         }
       }
     }
@@ -1779,6 +1786,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "GCB.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Share.Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

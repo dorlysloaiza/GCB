@@ -1,29 +1,34 @@
 
+using GCB.Entities.Modelos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 
 public class GCBContext : DbContext
 {
-    
 
-    private readonly AuditInterceptor _auditInterceptor;
 
-   
-    public GCBContext(DbContextOptions<GCBContext> options, AuditInterceptor auditInterceptor)
+
+
+    public GCBContext(DbContextOptions<GCBContext> options)
         : base(options)
     {
-        _auditInterceptor = auditInterceptor;
+
     }
 
-    public DbSet<Transaction> Transactions { get; set; }
-    public DbSet<AuditLog> AuditLogs { get; set; }
-    
+    public DbSet<Transaccion> Transacciones { get; set; }
+    public DbSet<RegistroAuditoria> RegistrosAuditoria { get; set; }
+    public DbSet<Categoria> Categorias { get; set; }
+    public DbSet<AdjuntoGCB> AdjuntosGCB { get; set; }
+    public DbSet<CuentaBanco> CuentaBanco { get; set; }
+    public DbSet<Banco> Bancos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configuraciones adicionales del modelo
+        
     }
 }
+
+    

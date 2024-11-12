@@ -11,3 +11,6 @@ C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\refint\GCB
 C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.pdb
 C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\ref\GCB.Entities.dll
 C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.csproj.AssemblyReference.cache
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\bin\Debug\net8.0\Share.Entities.dll
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\bin\Debug\net8.0\Share.Entities.pdb
+C:\Users\dorly\OneDrive\Codigos GIT\GCB\GCB.Entities\obj\Debug\net8.0\GCB.Entities.csproj.CopyComplete

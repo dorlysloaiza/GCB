@@ -986,6 +986,16 @@
             "rid": "win"
           }
         }
+      },
+      "Share.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Share.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Share.Entities.dll": {}
+        }
       }
     }
   },
@@ -2740,13 +2750,19 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Share.Entities/1.0.0": {
+      "type": "project",
+      "path": "../../Share.Entities/Share.Entities.csproj",
+      "msbuildProject": "../../Share.Entities/Share.Entities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Relational >= 8.0.8",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
+      "Share.Entities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2755,9 +2771,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj",
-      "projectName": "GCB.Entities",
-      "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj",
+      "projectUniqueName": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj",
+      "projectName": "GCB.Entitidades",
+      "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj",
       "packagesPath": "C:\\Users\\dorly\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\obj\\",
       "projectStyle": "PackageReference",
@@ -2775,7 +2791,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj": {
+              "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2817,7 +2837,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

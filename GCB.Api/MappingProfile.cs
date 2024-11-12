@@ -4,9 +4,11 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-           CreateMap<Transaction, TransactionDto>()
-            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
-            .ForMember(dest => dest.BankAccountName, opt => opt.MapFrom(src => src.BankAccount.BankName))
+           CreateMap<Transaccion, TransaccionDto>()
+            .ForMember(dest => dest.DescripcionCategoria, opt => opt.MapFrom(src => src.Categoria.Descripcion))
+            .ForMember(dest => dest.TipoCategoria, opt => opt.MapFrom(src => src.Categoria.Tipo))
+            .ForMember(dest => dest.NumeroCuenta, opt => opt.MapFrom(src => src.CuentaBancaria.NumeroCuenta))
+            .ForMember(dest => dest.NombreBanco, opt => opt.MapFrom(src => src.CuentaBancaria.Banco.Nombre))
             .ReverseMap();
     }
 }

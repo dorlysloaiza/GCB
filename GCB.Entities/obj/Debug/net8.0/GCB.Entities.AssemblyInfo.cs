@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GCB.Entities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d04d511029b9321ba7b584c0989a033adc7879f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+509336d36c65afdf8b33ef6d2ee6995abc5720f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("GCB.Entities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GCB.Entities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

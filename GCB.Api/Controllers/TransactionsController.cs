@@ -2,7 +2,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.AspNetCore.OData.Query;
-
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,93 +9,148 @@ using GCB.Api.Services;
 using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Formatter;
 
-namespace ProductService.Controllers
+namespace GCB.Api.Controllers
 {
-    [Route("odata/[controller]")]
+    [Route("[controller]")]
+    [ApiController]
     public class TransactionsController : ODataController
     {
-        private readonly IGenericService<Transaction> _service;
+        private readonly IGenericService<Transaccion> _service;
         private readonly IMapper _mapper;
 
-        public TransactionsController(IGenericService<Transaction> service, IMapper mapper)
+        public TransactionsController(IGenericService<Transaccion> service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
         }
 
         [EnableQuery]
-        public IQueryable<TransactionDto> Get()
+        [HttpGet()]
+        public async Task<IActionResult> Get()
         {
-            var transactions = _service.GetAllAsync("Category", "BankAccount", "Attachments").Result;
-            return transactions.Select(t => _mapper.Map<TransactionDto>(t)).AsQueryable();
+            try
+            {
+                var transactions = await _service.GetAllAsync("Categoria", "CuentaBancaria", "Adjuntos");
+                var transactionDtos = transactions.Select(t => _mapper.Map<TransaccionDto>(t)).AsQueryable();
+                return Ok(transactionDtos);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [EnableQuery]
+        [HttpGet("{key}")]
         public async Task<IActionResult> Get([FromODataUri] Guid key)
         {
-            var transaction = await _service.GetByIdAsync(key, "Category", "BankAccount", "Attachments");
-            if (transaction == null)
+            try
             {
-                return NotFound();
+                var transaction = await _service.GetByIdAsync(key, "Categoria", "CuentaBancaria", "Adjuntos");
+                if (transaction == null)
+                {
+                    return NotFound();
+                }
+                return Ok(_mapper.Map<TransaccionDto>(transaction));
             }
-            return Ok(_mapper.Map<TransactionDto>(transaction));
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
-
-        public async Task<IActionResult> Post([FromBody] TransactionDto transactionDto)
+        [HttpPost()]
+        public async Task<IActionResult> Post([FromBody] TransaccionDto transactionDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var transaction = _mapper.Map<Transaction>(transactionDto);
-            var createdTransaction = await _service.AddAsync(transaction);
-            return Created(_mapper.Map<TransactionDto>(createdTransaction));
+            try
+            {
+                var transaction = _mapper.Map<Transaccion>(transactionDto);
+                var createdTransaction = await _service.AddAsync(transaction);
+                return Created(_mapper.Map<TransaccionDto>(createdTransaction));
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
-
-        public async Task<IActionResult> Put([FromODataUri] Guid key, [FromBody] TransactionDto transactionDto)
+        [HttpPut()]
+        public async Task<IActionResult> Put([FromODataUri] Guid key, [FromBody] TransaccionDto transactionDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var transaction = _mapper.Map<Transaction>(transactionDto);
-            var updatedTransaction = await _service.UpdateAsync(key, transaction);
-            return Updated(_mapper.Map<TransactionDto>(updatedTransaction));
+            try
+            {
+                var transaction = _mapper.Map<Transaccion>(transactionDto);
+                var updatedTransaction = await _service.UpdateAsync(key, transaction);
+                if (updatedTransaction == null)
+                {
+                    return NotFound();
+                }
+                return Ok(_mapper.Map<TransaccionDto>(updatedTransaction));
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
-
-        public async Task<IActionResult> Patch([FromODataUri] Guid key, [FromBody] Delta<TransactionDto> transactionDto)
+        [HttpPatch()]
+        public async Task<IActionResult> Patch([FromODataUri] Guid key, [FromBody] Delta<TransaccionDto> transactionDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var transaction = await _service.GetByIdAsync(key);
-           
-            if (transaction == null)
+            try
             {
-                return NotFound();
+                var transaction = await _service.GetByIdAsync(key, "Categoria", "CuentaBancaria", "Adjuntos");
+                if (transaction == null)
+                {
+                    return NotFound();
+                }
+
+                var transactionDtoToPatch = _mapper.Map<TransaccionDto>(transaction);
+                transactionDto.Patch(transactionDtoToPatch);
+
+                var patchedTransaction = _mapper.Map<Transaccion>(transactionDtoToPatch);
+                await _service.PatchAsync(key, patchedTransaction);
+
+                return Updated(_mapper.Map<TransaccionDto>(patchedTransaction));
             }
-            ;
-            var patchedTransaction=transactionDto.Patch(_mapper.Map<TransactionDto>(transaction));
-           
-            await _service.PatchAsync(patchedTransaction.Id, _mapper.Map<Transaction>(patchedTransaction));
-
-            return Updated(_mapper.Map<TransactionDto>(patchedTransaction));
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
-
-
+        [HttpDelete()]
         public async Task<IActionResult> Delete([FromODataUri] Guid key)
         {
-            var result = await _service.DeleteAsync(key);
-            if (!result)
+            try
             {
-                return NotFound();
+                var result = await _service.DeleteAsync(key);
+                if (!result)
+                {
+                    return NotFound();
+                }
+                return NoContent();
             }
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }

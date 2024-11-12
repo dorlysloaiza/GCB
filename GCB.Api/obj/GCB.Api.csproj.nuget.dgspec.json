@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj": {
-                "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj"
+              "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj": {
+                "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj"
               },
               "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj": {
                 "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj"
@@ -119,16 +119,16 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.110/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj": {
+    "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj",
-        "projectName": "GCB.Entities",
-        "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj",
+        "projectName": "GCB.Entitidades",
+        "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\GCB.Entitidades.csproj",
         "packagesPath": "C:\\Users\\dorly\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\GCB\\GCB.Entities\\obj\\",
         "projectStyle": "PackageReference",
@@ -146,7 +146,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj": {
+                "projectPath": "C:\\Users\\dorly\\OneDrive\\Codigos GIT\\Share.Entities\\Share.Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -188,7 +192,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.110/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -243,7 +247,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.110/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
